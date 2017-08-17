@@ -95,6 +95,18 @@ SimpleTest.assertBoolean = function (variable) {
 };
 
 /**
+ * Check if variable is of type 'function'
+ * @param {object} variable Variable to compare to type 'function'
+ * @returns {boolean} Whether the variable is of type 'function'
+ */
+SimpleTest.assertFunction = function (variable) {
+    if (typeof variable !== 'function') {
+	SimpleTest.error("[SimpleTest] Variable is not a function. Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === 'function';
+};
+
+/**
  * Check if the condition provided evaluates to false
  * @param {boolean} condition Condition to be tested
  * @returns {boolean} If the condition is false or not
