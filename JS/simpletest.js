@@ -13,11 +13,11 @@ SimpleTest.throwErrors = true;
  * @param {string} msg Message to output to console, and/or to throw as an error
  */
 SimpleTest.error = function (msg) {
+    console.log("[SimpleTest] TEST FAILED");
     console.log(msg);
     if (SimpleTest.throwErrors !== false) {
         throw (msg);
     }
-    console.log("[SimpleTest] TEST FAILED");
 };
 
 /**
@@ -146,4 +146,21 @@ SimpleTest.assertNull = function (object) {
  */
 SimpleTest.fail = function () {
     SimpleTest.error("[SimpleTest] Failed test.");
+}
+
+// Export functions to nodeJS if using NodeJS
+if(module !== undefined){
+    module.exports = {
+        assertEquals: SimpleTest.assertEquals,
+        assertType: SimpleTest.assertType,
+        assertNumber: SimpleTest.assertNumber,
+        assertObject: SimpleTest.assertObject,
+        assertString: SimpleTest.assertString,
+        assertBoolean: SimpleTest.assertBoolean,
+        assertFalse: SimpleTest.assertFalse,
+        assertTrue: SimpleTest.assertTrue,
+        assertNotNull: SimpleTest.assertNotNull,
+        assertNull: SimpleTest.assertNull,
+        fail: SimpleTest.fail
+    };
 }
