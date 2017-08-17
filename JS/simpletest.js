@@ -33,6 +33,66 @@ SimpleTest.assertEquals = function (expected, actual) {
     }
     return equal;
 };
+/**
+ * Check if variable is of type 'type'.
+ * @param {string} type Type of variable to check against
+ * @param {object} variable Variable to compare to type 'type'
+ * @returns {boolean} Whether the variable is of type 'type'
+ */
+SimpleTest.assertType = function (type, variable) {
+    if (typeof variable !== type) {
+        SimpleTest.error("[SimpleTest] Variable is not a(n) " + type + ". Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === type;
+};
+
+/**
+ * Check if variable is of type 'number'
+ * @param {object} variable Variable to compare to type 'number'
+ * @returns {boolean} Whether the variable is of type 'number'
+ */
+SimpleTest.assertNumber = function (variable) {
+    if (typeof variable !== "number" || isNaN(variable)) {
+        SimpleTest.error("[SimpleTest] Variable is not a number. Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === "number";
+};
+
+/**
+ * Check if variable is of type 'object'
+ * @param {object} variable Variable to compare to type 'object'
+ * @returns {boolean} Whether the variable is of type 'object'
+ */
+SimpleTest.assertObject = function (variable) {
+    if (typeof variable !== "object") {
+        SimpleTest.error("[SimpleTest] Variable is not an object. Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === "object";
+};
+
+/**
+ * Check if variable is of type 'string'
+ * @param {object} variable Variable to compare to type 'string'
+ * @returns {boolean} Whether the variable is of type 'string'
+ */
+SimpleTest.assertString = function (variable) {
+    if (typeof variable !== "string") {
+        SimpleTest.error("[SimpleTest] Variable is not a string. Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === "string";
+};
+
+/**
+ * Check if variable is of type 'boolean'
+ * @param {object} variable Variable to compare to type 'boolean'
+ * @returns {boolean} Whether the variable is of type 'boolean'
+ */
+SimpleTest.assertBoolean = function (variable) {
+    if (typeof variable !== "boolean") {
+        SimpleTest.error("[SimpleTest] Variable is not a boolean. Variable: " + variable + ", Type: " + typeof variable);
+    }
+    return typeof variable === "boolean";
+};
 
 /**
  * Check if the condition provided evaluates to false
