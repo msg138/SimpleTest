@@ -158,7 +158,20 @@ SimpleTest.assertNull = function (object) {
  */
 SimpleTest.fail = function () {
     SimpleTest.error("[SimpleTest] Failed test.");
-}
+};
+
+/**
+ * Get the amount of time it takes to run a function, returns in milliseconds
+ * @param {function} func Function to run and time
+ * @returns {number} Time it took to run function, in milliseconds
+ */
+SimpleTest.timeToRun = function(func){
+    var d = new Date();
+    var n = d.getTime();
+    SimpleTest.assertFunction(func);
+    func();
+    return d.getTime() - n;
+};
 
 // Export functions to nodeJS if using NodeJS
 if(module !== undefined){
@@ -173,6 +186,7 @@ if(module !== undefined){
         assertTrue: SimpleTest.assertTrue,
         assertNotNull: SimpleTest.assertNotNull,
         assertNull: SimpleTest.assertNull,
-        fail: SimpleTest.fail
+        fail: SimpleTest.fail,
+        timeToRun: SimpleTest.timeToRun
     };
 }
